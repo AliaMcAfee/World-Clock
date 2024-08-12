@@ -1,19 +1,19 @@
 // Chicago
 setInterval(function () {
-  let chicagoElement = document.querySelector("#chicago");
-  if (chicagoElement.length) {
-    let chicagoDateElement = document.querySelector(".date");
-    let chicagoTimeElement = document.querySelector(".time");
-    let chicagoTime = moment().tz();
+  let phoenixElement = document.querySelector("#phoenix");
+  if (phoenixElementElement) {
+    let phoenixDateElement = document.querySelector(".date");
+    let phoenixDateElementTimeElement = document.querySelector(".time");
+    let phoenixTime = moment().tz();
 
-    chicagoDateElement.innerHTML = chicagoTime.format("MMMM Do YYYY");
-    chicagoTimeElement.innerHTML = chicagoTime.format(
+    phoenixDateElement.innerHTML = chicagoTime.format("MMMM Do YYYY");
+    phoenixTimeElement.innerHTML = chicagoTime.format(
       "h:mm:ss [<small>]A[</small>]"
     );
   }
 
   let athensElement = document.querySelector("#athens");
-  if (athensElement.length) {
+  if (athensElement) {
     let athensDateElement = document.querySelector(".date");
     let athensTimeElement = document.querySelector(".time");
     let athensTime = moment().tz("Europe/Athens");
@@ -27,6 +27,9 @@ setInterval(function () {
 
 function updateCity(event) {
   let cityTimeZone = event.target.value;
+  if (cityTimeZone === "current") {
+    cityTimeZone = moment.tz.guess();
+  }
   let cityName = cityTimeZone.replace("_", " ").split("/")[1];
   let cityTime = moment().tz(cityTimeZone);
   let citiesElement = document.querySelector("#cities");
